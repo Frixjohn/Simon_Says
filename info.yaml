@@ -8,10 +8,10 @@ project:
 
   language: "Verilog"
   clock_hz: 25175000
-  tiles: "1x1"
+  tiles: "2x2"
 
   # Must match the module declared in src/project.v.
-  top_module: "tt_um_vga_example"
+  top_module: "tt_um_frix_simon_says"
 
   source_files:
     - "project.v"
