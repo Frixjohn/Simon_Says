@@ -23,7 +23,19 @@ module tb ();
   wire VGND = 1'b0;
 `endif
 
-  tt_um_frix_simon_says user_project (
+  // Use tiny frame-based game timings in RTL simulation so the game FSM
+  // can be exercised without waiting through the real 0.8 s boot/reveal
+  // delays. These parameters do not change the silicon defaults.
+  tt_um_vga_example #(
+      .BOOT_FRAMES(16'd0),
+      .SHOW_GAP_FRAMES(16'd0),
+      .BASE_SHOW_FRAMES(16'd0),
+      .MIN_SHOW_FRAMES(16'd0),
+      .ROUND_OK_FRAMES(16'd0),
+      .INPUT_TIMEOUT_FRAMES(16'd3),
+      .FEEDBACK_FRAMES(16'd0),
+      .MISS_FLASH_FRAMES(16'd1)
+  ) user_project (
 `ifdef GL_TEST
       .VPWR(VPWR),
       .VGND(VGND),

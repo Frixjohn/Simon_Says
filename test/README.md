@@ -45,3 +45,10 @@ Using Surfer
 ```sh
 surfer tb.fst
 ```
+
+
+### Simon Says test
+
+The testbench uses zero-delay game parameters only in the RTL simulation
+instance. This makes it possible to exercise the Gamepad Pmod interface and
+the game FSM without waiting through the real gameplay delays used by the chip.
