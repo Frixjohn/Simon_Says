@@ -1008,7 +1008,6 @@ module tt_um_vga_example #(
         3'd3:    msg_len = line ? 4'd0 : 4'd9;   // EXCELLENT
         3'd4:    msg_len = line ? 4'd8 : 4'd10;  // HIGH SCORE / REACHED!
         3'd5:    msg_len = line ? 4'd0 : 4'd5;   // NOPE!
-        3'd6:    msg_len = line ? 4'd0 : 4'd8;   // BOBO KA!
         default: msg_len = 4'd0;
       endcase
     end
