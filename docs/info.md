@@ -1,21 +1,37 @@
-<!---
+# How it works
 
-This file is used to generate your project datasheet. Please fill in the information below and delete any unused
-sections.
+**Simon Says** is a VGA-based memory game. After reset, the design shows a short
+intro and then waits for the player to press the **START** button on a Gamepad
+Pmod. Each round adds one more randomly selected button to the sequence.
 
-You can also include images in this folder and reference them in the markdown. Each image must be less than
-512 kb in size, and the combined size of all images must be less than 1 MB.
--->
+The design displays the sequence on the Tiny VGA output. The player must repeat
+the buttons in the same order. Correct inputs flash green and advance through
+the current sequence; an incorrect input flashes red and ends the run. A simple
+PWM sound output is provided on `uio[0]` for button notes and the miss tone.
 
-## it works
-#fjijaf
+The game uses twelve possible Gamepad inputs: LEFT, RIGHT, UP, DOWN, A, B, X, Y,
+L, R, SELECT, and START.
 
-Explain how your project works, it works like simon
+## How to test
 
-fejfiaj
+Connect the Tiny Tapeout VGA output to a compatible display and connect a
+Gamepad Pmod to `ui[4:6]`:
 
-Explain how to use your project, test  how simon
+- `ui[4]`: Gamepad LATCH
+- `ui[5]`: Gamepad CLOCK
+- `ui[6]`: Gamepad DATA
 
-oefwpjwpprthq3orhwroteroirgwo rqnegie54k2r,gmrkjewnregdtrekq
+Press **START** to begin. Watch the highlighted pads, then repeat the sequence
+on the controller. A correct sequence advances to the next round; a wrong
+button ends the run. The optional audio output is available on `uio[0]`.
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any simon
+The repository also contains a cocotb RTL testbench. It checks reset and VGA
+sync timing and exercises the actual Gamepad Pmod serial interface through the
+Simon Says FSM.
+
+## External hardware
+
+- Tiny VGA Pmod / VGA-compatible display
+- Gamepad Pmod
+- Optional piezo or speaker connected through suitable filtering/amplification
+  to `uio[0]`
