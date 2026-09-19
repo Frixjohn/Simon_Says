@@ -11,7 +11,7 @@ project:
   tiles: "1x1"
 
   # Must match the module declared in src/project.v.
-  top_module: "tt_um_frix_simon_says"
+  top_module: "tt_um_vga_example"
 
   source_files:
     - "project.v"
